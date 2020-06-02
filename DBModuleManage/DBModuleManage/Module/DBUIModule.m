@@ -12,4 +12,8 @@
 - (void)run{
     NSLog(@"run  DBUIModule");
 }
+
+- (void)onDestroy{
+    NSLog(@"onDestroy  DBUIModule");
+}
 @end

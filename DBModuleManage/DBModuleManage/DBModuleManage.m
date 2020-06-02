@@ -16,7 +16,7 @@
 
 
 
-@property (nonatomic, strong) NSMutableDictionary  *installedModule;
+@property (nonatomic, strong) NSMutableDictionary <NSString *,DBModule*> *installedModule;
 
 @end
 
@@ -50,6 +50,15 @@
     }];
     
  
+}
+
+- (void)uninstallModule{
+    [NSThread cancelPreviousPerformRequestsWithTarget:self];
+    [self.installedModule enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DBModule * _Nonnull obj, BOOL * _Nonnull stop) {
+        [obj onDestroy];
+    }];
+    
+    [self.installedModule removeAllObjects];
 }
 - (void)installNormalModule{
     [self.normalModuleConfig enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DBModuleConfig * _Nonnull obj, BOOL * _Nonnull stop) {
