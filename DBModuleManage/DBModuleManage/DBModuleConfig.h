@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) DBModulePriority  priority;//优先级
 
+@property (nonatomic, copy) NSArray  *messages; //消息列表
+
+
 @end
 
 NS_ASSUME_NONNULL_END

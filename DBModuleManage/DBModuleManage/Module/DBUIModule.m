@@ -10,10 +10,20 @@
 
 @implementation DBUIModule
 - (void)run{
-    NSLog(@"run  DBUIModule");
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 100, 100, 100);
+    btn.backgroundColor = [UIColor redColor];
+    [self.moduleManage.viewController.view addSubview:btn];
+
+//    NSLog(@"run  DBUIModule");
 }
 
 - (void)onDestroy{
-    NSLog(@"onDestroy  DBUIModule");
+//    NSLog(@"onDestroy  DBUIModule");
+}
+
+- (void)onReceiveMessage:(NSString *)message{
+        NSLog(@"message");
+
 }
 @end

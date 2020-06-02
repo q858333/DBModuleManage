@@ -8,15 +8,19 @@
 
 #import "DBModuleManage.h"
 #import "DBModule.h"
+#import "MessageBusManager.h"
+
 @interface DBModuleManage ()
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *lowModuleConfig;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *normalModuleConfig;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *highModuleConfig;
 @property (nonatomic, strong) NSMutableDictionary  <NSString *,DBModuleConfig *> *whenUseModuleConfig;
 
-
-
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModule*> *installedModule;
+
+
+@property (nonatomic, strong) NSMutableDictionary <NSString *,NSMutableArray <DBModule *>*> *messageConfig;
+
 
 @end
 
@@ -37,6 +41,18 @@
         [self.lowModuleConfig setObject:module forKey:module.idenfiter];
     }
     
+//    for (NSString *messageName in module.messages) {
+//        NSMutableArray *modules = [self.messageConfig objectForKey:messageName];
+//        if(!modules){
+//            NSMutableArray *arr = [[NSMutableArray alloc] init];
+//            [arr addObject:module.idenfiter];
+//            [self.messageConfig setObject:arr forKey:messageName];
+//        }else{
+//            [modules addObject:module.idenfiter];
+//        }
+//
+//    }
+//
 }
 
 - (void)installModule{
@@ -78,6 +94,24 @@
     }];
 }
 
+- (void)checkRegisterModuleWithMessage:(NSString *)messageName{
+    [self performInMainThreadBlock:^{
+         NSArray *configs = @[self.whenUseModuleConfig,self.highModuleConfig,self.normalModuleConfig,self.lowModuleConfig];
+        
+        
+        for (NSDictionary *dic in configs) {
+            [dic enumerateKeysAndObjectsUsingBlock:^(NSString  *indenfier, DBModuleConfig *config, BOOL * _Nonnull stop) {
+                if([config.messages containsObject:messageName]){
+                  [self moduleInitWithModuleConfig:config];
+//                    [module onReceiveMessage:messageName];
+                }
+                
+            }];
+            
+        }
+    }];
+    
+}
 - (DBModule *)moduleByIdenfiter:(NSString *)idenfiter{
     __block DBModule *module = nil;
 
@@ -118,9 +152,15 @@
     
     Class class = NSClassFromString(config.className);
     DBModule *module = [[class alloc] init];
-    
+    module.moduleManage = self;
     [self.installedModule setObject:module forKey:config.idenfiter];
+    for (NSString *messageName in config.messages) {
+        [self.messageBusManager addAppObserver:module messageName:messageName selector:@selector(onReceiveMessage:) priority:0 excuteThreadMode:0];
+    }    
+    
     [module run];
+    
+    
     
     return module;
     
@@ -164,6 +204,12 @@
         _highModuleConfig = [[NSMutableDictionary alloc] init];
     }
     return _highModuleConfig;
+}
+- (NSMutableDictionary *)whenUseModuleConfig{
+    if(!_whenUseModuleConfig){
+        _whenUseModuleConfig = [[NSMutableDictionary alloc] init];
+    }
+    return _whenUseModuleConfig;
 }
 - (NSMutableDictionary *)installedModule{
     if(!_installedModule){

@@ -18,8 +18,11 @@
 		EC68455D2484ED540040BB0D /* DBModuleManageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68455C2484ED540040BB0D /* DBModuleManageUITests.m */; };
 		EC6845732484ED620040BB0D /* DBModuleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68456B2484ED620040BB0D /* DBModuleConfig.m */; };
 		EC6845742484ED620040BB0D /* DBUIModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68456D2484ED620040BB0D /* DBUIModule.m */; };
-		EC6845752484ED620040BB0D /* DBModuleManage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68456F2484ED620040BB0D /* DBModuleManage.m */; };
-		EC6845762484ED620040BB0D /* DBModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6845722484ED620040BB0D /* DBModule.m */; };
+		EC684579248601EB0040BB0D /* DBModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EC684578248601EB0040BB0D /* DBModule.m */; };
+		EC68458A24863B410040BB0D /* DBObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68458424863B400040BB0D /* DBObserver.m */; };
+		EC68458B24863B410040BB0D /* MessageBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68458724863B400040BB0D /* MessageBusManager.m */; };
+		EC68458C24863B410040BB0D /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68458824863B400040BB0D /* DBMessage.m */; };
+		EC68458F24863B710040BB0D /* DBModuleManage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68458E24863B710040BB0D /* DBModuleManage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,14 +61,20 @@
 		EC6845582484ED540040BB0D /* DBModuleManageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBModuleManageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC68455C2484ED540040BB0D /* DBModuleManageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBModuleManageUITests.m; sourceTree = "<group>"; };
 		EC68455E2484ED540040BB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC68456A2484ED620040BB0D /* DBModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModule.h; sourceTree = "<group>"; };
 		EC68456B2484ED620040BB0D /* DBModuleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBModuleConfig.m; sourceTree = "<group>"; };
 		EC68456D2484ED620040BB0D /* DBUIModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUIModule.m; sourceTree = "<group>"; };
 		EC68456E2484ED620040BB0D /* DBUIModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUIModule.h; sourceTree = "<group>"; };
-		EC68456F2484ED620040BB0D /* DBModuleManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBModuleManage.m; sourceTree = "<group>"; };
 		EC6845702484ED620040BB0D /* DBModuleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModuleConfig.h; sourceTree = "<group>"; };
-		EC6845712484ED620040BB0D /* DBModuleManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModuleManage.h; sourceTree = "<group>"; };
-		EC6845722484ED620040BB0D /* DBModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBModule.m; sourceTree = "<group>"; };
+		EC684577248601EB0040BB0D /* DBModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBModule.h; path = DBModuleManage/DBModule.h; sourceTree = SOURCE_ROOT; };
+		EC684578248601EB0040BB0D /* DBModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBModule.m; path = DBModuleManage/DBModule.m; sourceTree = SOURCE_ROOT; };
+		EC68458424863B400040BB0D /* DBObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBObserver.m; sourceTree = "<group>"; };
+		EC68458524863B400040BB0D /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessage.h; sourceTree = "<group>"; };
+		EC68458624863B400040BB0D /* MessageBusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBusManager.h; sourceTree = "<group>"; };
+		EC68458724863B400040BB0D /* MessageBusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBusManager.m; sourceTree = "<group>"; };
+		EC68458824863B400040BB0D /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessage.m; sourceTree = "<group>"; };
+		EC68458924863B400040BB0D /* DBObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBObserver.h; sourceTree = "<group>"; };
+		EC68458D24863B710040BB0D /* DBModuleManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBModuleManage.h; sourceTree = "<group>"; };
+		EC68458E24863B710040BB0D /* DBModuleManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBModuleManage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,12 +131,11 @@
 				EC6845392484ED520040BB0D /* SceneDelegate.m */,
 				EC68453B2484ED520040BB0D /* ViewController.h */,
 				EC68453C2484ED520040BB0D /* ViewController.m */,
-				EC68456A2484ED620040BB0D /* DBModule.h */,
-				EC6845722484ED620040BB0D /* DBModule.m */,
 				EC6845702484ED620040BB0D /* DBModuleConfig.h */,
 				EC68456B2484ED620040BB0D /* DBModuleConfig.m */,
-				EC6845712484ED620040BB0D /* DBModuleManage.h */,
-				EC68456F2484ED620040BB0D /* DBModuleManage.m */,
+				EC68458D24863B710040BB0D /* DBModuleManage.h */,
+				EC68458E24863B710040BB0D /* DBModuleManage.m */,
+				EC68457A248636E30040BB0D /* MessageBus */,
 				EC68456C2484ED620040BB0D /* Module */,
 				EC68453E2484ED520040BB0D /* Main.storyboard */,
 				EC6845412484ED530040BB0D /* Assets.xcassets */,
@@ -159,10 +167,25 @@
 		EC68456C2484ED620040BB0D /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EC684577248601EB0040BB0D /* DBModule.h */,
+				EC684578248601EB0040BB0D /* DBModule.m */,
 				EC68456E2484ED620040BB0D /* DBUIModule.h */,
 				EC68456D2484ED620040BB0D /* DBUIModule.m */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		EC68457A248636E30040BB0D /* MessageBus */ = {
+			isa = PBXGroup;
+			children = (
+				EC68458524863B400040BB0D /* DBMessage.h */,
+				EC68458824863B400040BB0D /* DBMessage.m */,
+				EC68458924863B400040BB0D /* DBObserver.h */,
+				EC68458424863B400040BB0D /* DBObserver.m */,
+				EC68458624863B400040BB0D /* MessageBusManager.h */,
+				EC68458724863B400040BB0D /* MessageBusManager.m */,
+			);
+			path = MessageBus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,13 +318,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC6845752484ED620040BB0D /* DBModuleManage.m in Sources */,
-				EC6845762484ED620040BB0D /* DBModule.m in Sources */,
+				EC68458C24863B410040BB0D /* DBMessage.m in Sources */,
+				EC68458B24863B410040BB0D /* MessageBusManager.m in Sources */,
+				EC684579248601EB0040BB0D /* DBModule.m in Sources */,
 				EC68453D2484ED520040BB0D /* ViewController.m in Sources */,
 				EC6845742484ED620040BB0D /* DBUIModule.m in Sources */,
 				EC6845372484ED520040BB0D /* AppDelegate.m in Sources */,
 				EC6845482484ED530040BB0D /* main.m in Sources */,
 				EC68453A2484ED520040BB0D /* SceneDelegate.m in Sources */,
+				EC68458F24863B710040BB0D /* DBModuleManage.m in Sources */,
+				EC68458A24863B410040BB0D /* DBObserver.m in Sources */,
 				EC6845732484ED620040BB0D /* DBModuleConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
 //    self.moduleManege = [[DBModuleManage alloc] init];
     // Override point for customization after application launch.
     return YES;

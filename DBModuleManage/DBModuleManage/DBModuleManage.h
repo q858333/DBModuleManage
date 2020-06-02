@@ -6,18 +6,20 @@
 //  Copyright © 2020 dengsir. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 #import "DBModuleConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class MessageBusManager;
 @interface DBModuleManage : NSObject
+@property (nonatomic, weak) MessageBusManager *messageBusManager;
+
+
 @property (nonatomic, weak) UIViewController *viewController;
 - (void)registerModule:(DBModuleConfig *)module;
 
 - (void)installModule;
+- (void)checkRegisterModuleWithMessage:(NSString *)messageName;
 
 
 

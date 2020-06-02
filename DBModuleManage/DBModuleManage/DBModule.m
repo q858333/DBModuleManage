@@ -14,4 +14,7 @@
 }
 - (void)onDestroy{
 }
+- (void)onReceiveMessage:(NSString *)message{
+    
+}
 @end
