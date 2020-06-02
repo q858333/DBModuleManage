@@ -42,6 +42,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self.messageBusManager postMessageWithMessageName:@"hhh"];
+    [self.messageBusManager postMessageWithMessageName:@"hhh1"];
+    [self.messageBusManager postMessageWithMessageName:@"hhh"];
+
     
 }
 - (void)viewDidLoad {

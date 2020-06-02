@@ -62,6 +62,7 @@
             [self moduleInitWithModuleConfig:obj];
             
         }];
+        [self.highModuleConfig removeAllObjects];
         [self performSelector:@selector(installNormalModule) withObject:nil afterDelay:5];
     }];
     
@@ -82,6 +83,7 @@
            [self moduleInitWithModuleConfig:obj];
            
        }];
+    [self.normalModuleConfig removeAllObjects];
     
     [self performSelector:@selector(installLowModule) withObject:nil afterDelay:5];
 }
@@ -92,6 +94,7 @@
         
         [self moduleInitWithModuleConfig:obj];
     }];
+    [self.normalModuleConfig removeAllObjects];
 }
 
 - (void)checkRegisterModuleWithMessage:(NSString *)messageName{
@@ -100,11 +103,10 @@
         NSArray *configs = @[self.whenUseModuleConfig,self.highModuleConfig,self.normalModuleConfig,self.lowModuleConfig];
         
         
-        for (NSDictionary *dic in configs) {
+        for (NSMutableDictionary *dic in configs) {
             [dic enumerateKeysAndObjectsUsingBlock:^(NSString  *indenfier, DBModuleConfig *config, BOOL * _Nonnull stop) {
                 if([config.messages containsObject:messageName]){
-                  [self moduleInitWithModuleConfig:config];
-//                    [module onReceiveMessage:messageName];
+                  [self moduleInitWithModuleConfig:config moduleDic:dic];
                 }
                 
             }];
@@ -122,13 +124,17 @@
         }
         
         if(!module){
+
             NSArray *configs = @[self.whenUseModuleConfig,self.highModuleConfig,self.normalModuleConfig,self.lowModuleConfig];
-               [configs enumerateObjectsUsingBlock:^(NSDictionary  *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+               [configs enumerateObjectsUsingBlock:^(NSMutableDictionary  *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                    
                    [dic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, DBModuleConfig * _Nonnull config, BOOL * _Nonnull stop) {
-                          module = [self moduleInitWithModuleConfig:config];
+                       
+                       if(idenfiter == config.idenfiter){
+                           module = [self moduleInitWithModuleConfig:config moduleDic:dic];
+                           *stop = YES;
+                       }
 
-                       *stop = YES;
                    }];
                    
                    if(module){
@@ -136,6 +142,8 @@
                    }
                    
                }];
+
+            
         }
         
         
@@ -144,7 +152,12 @@
     return module;
     
 }
-
+- (DBModule *)moduleInitWithModuleConfig:(DBModuleConfig *)config moduleDic:(NSMutableDictionary *)moduleDic{
+    DBModule *module  = [self moduleInitWithModuleConfig:config];
+    [moduleDic removeObjectForKey:config.idenfiter];
+    
+    return module;
+}
 - (DBModule *)moduleInitWithModuleConfig:(DBModuleConfig *)config{
     
     if([self.installedModule objectForKey:config.idenfiter]){
@@ -161,7 +174,6 @@
     [self.messageBusManager sortObserver];
     
     [module run];
-    
     
     
     return module;

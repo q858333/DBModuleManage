@@ -15,7 +15,7 @@
     btn.backgroundColor = [UIColor redColor];
     [self.moduleManage.viewController.view addSubview:btn];
 
-//    NSLog(@"run  DBUIModule");
+    NSLog(@"run  DBUIModule");
 }
 
 - (void)onDestroy{
