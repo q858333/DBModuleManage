@@ -96,7 +96,8 @@
 
 - (void)checkRegisterModuleWithMessage:(NSString *)messageName{
     [self performInMainThreadBlock:^{
-         NSArray *configs = @[self.whenUseModuleConfig,self.highModuleConfig,self.normalModuleConfig,self.lowModuleConfig];
+         
+        NSArray *configs = @[self.whenUseModuleConfig,self.highModuleConfig,self.normalModuleConfig,self.lowModuleConfig];
         
         
         for (NSDictionary *dic in configs) {
@@ -156,7 +157,8 @@
     [self.installedModule setObject:module forKey:config.idenfiter];
     for (NSString *messageName in config.messages) {
         [self.messageBusManager addAppObserver:module messageName:messageName selector:@selector(onReceiveMessage:) priority:0 excuteThreadMode:0];
-    }    
+    }
+    [self.messageBusManager sortObserver];
     
     [module run];
     
