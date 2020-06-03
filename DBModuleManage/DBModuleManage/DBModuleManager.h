@@ -16,12 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, weak) UIViewController *viewController;
+//注册模块
 - (void)registerModule:(DBModuleConfig *)module;
 
-- (void)installModule;
+//检查模块是否初始化
 - (void)checkRegisterModuleWithMessage:(NSString *)messageName;
 
-
+//安装/卸载模块
+- (void)installModule;
+- (void)uninstallModule;
 
 @end
 

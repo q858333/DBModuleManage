@@ -19,7 +19,7 @@
 }
 
 - (void)onDestroy{
-//    NSLog(@"onDestroy  DBUIModule");
+    NSLog(@"onDestroy  DBUIModule");
 }
 
 - (void)onReceiveMessage:(NSString *)message{
