@@ -6,11 +6,11 @@
 //  Copyright © 2020 dengsir. All rights reserved.
 //
 
-#import "DBModuleManage.h"
+#import "DBModuleManager.h"
 #import "DBModule.h"
 #import "MessageBusManager.h"
 
-@interface DBModuleManage ()
+@interface DBModuleManager ()
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *lowModuleConfig;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *normalModuleConfig;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *highModuleConfig;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation DBModuleManage
+@implementation DBModuleManager
 
 - (void)registerModule:(DBModuleConfig *)module{
     if(!module || module.className.length == 0){

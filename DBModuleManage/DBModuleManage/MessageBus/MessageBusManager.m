@@ -9,7 +9,7 @@
 #import "MessageBusManager.h"
 #import "DBObserver.h"
 #import "DBMessage.h"
-#import "DBModuleManage.h"
+#import "DBModuleManager.h"
 
 #define CP_DISPATCH_MAIN_ASYNC(block)\
 if ([NSThread isMainThread]) {\
@@ -20,7 +20,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 @interface MessageBusManager ()
 @property (nonatomic, strong) NSMutableDictionary *messageDic;
 
-@property (nonatomic, strong) NSMutableArray *watingHandleMessageList;
+@property (nonatomic, strong) NSMutableArray *waitingHandleMessageList;
 
 @end
 
@@ -70,19 +70,22 @@ dispatch_async(dispatch_get_main_queue(), block);\
 - (void)beginHandleMessage:(DBMessage *)message{
     
     @synchronized (self) {
-        [self.watingHandleMessageList addObject:message];
+        [self.waitingHandleMessageList addObject:message];
         [self handleMessage];
     }
 }
 
 - (void)handleMessage{
-    if(self.watingHandleMessageList.count == 0){
+    if(self.waitingHandleMessageList.count == 0){
         return;
     }
-    DBMessage *message = [self.watingHandleMessageList firstObject];
+    DBMessage *message = [self.waitingHandleMessageList firstObject];
+    
+    //检查监听对象是否创建（可以写成delegate让外部实现）
     [self checkMessageObserver:message];
+    
     [self invokeObserverSelctor:message];
-    [self.watingHandleMessageList removeObject:message];
+    [self.waitingHandleMessageList removeObject:message];
     [self handleMessage];
 }
 - (void)checkMessageObserver:(DBMessage *)message{
@@ -145,11 +148,11 @@ dispatch_async(dispatch_get_main_queue(), block);\
 }
 
 
-- (NSMutableArray *)watingHandleMessageList{
-    if(!_watingHandleMessageList){
-        _watingHandleMessageList = [[NSMutableArray alloc] init];
+- (NSMutableArray *)waitingHandleMessageList{
+    if(!_waitingHandleMessageList){
+        _waitingHandleMessageList = [[NSMutableArray alloc] init];
     }
-    return _watingHandleMessageList;
+    return _waitingHandleMessageList;
 }
 - (NSMutableDictionary *)messageDic{
     if(!_messageDic){

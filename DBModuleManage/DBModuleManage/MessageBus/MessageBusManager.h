@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class DBModuleManage;
+@class DBModuleManager;
 @interface MessageBusManager : NSObject
 
-@property (nonatomic, weak) DBModuleManage *moduleManager;
+@property (nonatomic, weak) DBModuleManager *moduleManager;
 
 +(id)shareMessageManager;
 

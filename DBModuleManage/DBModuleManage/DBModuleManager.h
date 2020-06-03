@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class MessageBusManager;
-@interface DBModuleManage : NSObject
+@interface DBModuleManager : NSObject
 @property (nonatomic, weak) MessageBusManager *messageBusManager;
 
 

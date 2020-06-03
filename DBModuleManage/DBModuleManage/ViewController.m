@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "DBModuleManage.h"
+#import "DBModuleManager.h"
 #import "DBUIModule.h"
 #import "MessageBusManager.h"
 @interface ViewController ()
-@property (nonatomic, strong) DBModuleManage *moduleManage;
+@property (nonatomic, strong) DBModuleManager *moduleManage;
 @property (nonatomic, strong) MessageBusManager *messageBusManager;
 
 @end
@@ -21,7 +21,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-         self.moduleManage = [[DBModuleManage alloc] init];
+         self.moduleManage = [[DBModuleManager alloc] init];
            self.moduleManage.viewController = self;
         
         self.messageBusManager = [[MessageBusManager alloc] init];
