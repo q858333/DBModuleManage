@@ -21,14 +21,16 @@
 - (void)btnClick{
     [self.moduleManage.messageBusManager postMessageWithMessageName:@"hhh1"];
     [self.moduleManage.messageBusManager postMessageWithMessageName:@"hhh"];
+    [self.moduleManage.messageBusManager postMessageWithMessageName:@"hhh" data:@{@"1111":@"1111"}];
+
 
 }
 - (void)onDestroy{
     NSLog(@"onDestroy  DBUIModule");
 }
 
-- (void)onReceiveMessage:(NSString *)message{
-    NSLog(@"message DBUIModule");
+- (void)onReceiveMessage:(DBMessage *)message{
+    NSLog(@"DBTestModule message.name:%@ data:%@",message.messageName,message.data);
 }
 
 

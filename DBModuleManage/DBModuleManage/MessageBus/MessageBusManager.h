@@ -17,7 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(id)shareMessageManager;
 
 - (void)addAppObserver:(NSObject *)observer messageName:(NSString *)messageName selector:(SEL)selector priority:(NSInteger)priority excuteThreadMode:(NSInteger)excuteThreadMode;
+
 - (void)postMessageWithMessageName:(NSString *)messageName;
+- (void)postMessageWithMessageName:(NSString *)messageName data:(id)data;
+
 - (void)sortObserver;
 
 @end

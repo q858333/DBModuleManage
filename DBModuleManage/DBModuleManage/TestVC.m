@@ -39,7 +39,7 @@
         DBModuleConfig *config = [[DBModuleConfig alloc] init];
         config.className =@"DBUIModule";
         config.idenfiter = @"DBModuleUI";
-        config.priority = DBModulePriorityLow;
+        config.priority = DBModulePriorityNormal;
         config.messages = @[];
         [self.moduleManage registerModule:config];
     }

@@ -18,8 +18,8 @@
     NSLog(@"onDestroy  DBTestModule");
 }
 
-- (void)onReceiveMessage:(NSString *)message{
-    NSLog(@"message DBTestModule");
+- (void)onReceiveMessage:(DBMessage *)message{
+    NSLog(@"DBTestModule message.name:%@ data:%@",message.messageName,message.data);
 
 }
 @end

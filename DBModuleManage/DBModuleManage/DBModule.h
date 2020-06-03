@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DBModuleManager.h"
+#import "DBMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) DBModuleManager *moduleManage;
 - (void)run;
 - (void)onDestroy;
-- (void)onReceiveMessage:(NSString *)message;
+- (void)onReceiveMessage:(DBMessage *)message;
 
 @end
 

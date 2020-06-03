@@ -14,7 +14,7 @@
 }
 - (void)onDestroy{
 }
-- (void)onReceiveMessage:(NSString *)message{
-    
+- (void)onReceiveMessage:(DBMessage *)message{
+
 }
 @end
