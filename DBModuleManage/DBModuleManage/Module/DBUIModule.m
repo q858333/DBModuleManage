@@ -13,17 +13,25 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 100, 100, 100);
     btn.backgroundColor = [UIColor redColor];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.moduleManage.viewController.view addSubview:btn];
 
     NSLog(@"run  DBUIModule");
 }
+- (void)btnClick{
+    [self.moduleManage.messageBusManager postMessageWithMessageName:@"hhh1"];
+    [self.moduleManage.messageBusManager postMessageWithMessageName:@"hhh"];
 
+}
 - (void)onDestroy{
     NSLog(@"onDestroy  DBUIModule");
 }
 
 - (void)onReceiveMessage:(NSString *)message{
-        NSLog(@"message");
-
+    NSLog(@"message DBUIModule");
 }
+
+
+
+
 @end

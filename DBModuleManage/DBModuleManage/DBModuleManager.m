@@ -8,7 +8,6 @@
 
 #import "DBModuleManager.h"
 #import "DBModule.h"
-#import "MessageBusManager.h"
 
 @interface DBModuleManager ()
 @property (nonatomic, strong) NSMutableDictionary <NSString *,DBModuleConfig *> *lowModuleConfig;

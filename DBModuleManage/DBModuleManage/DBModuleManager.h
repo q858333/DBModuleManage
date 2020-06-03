@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DBModuleConfig.h"
+#import "MessageBusManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@class MessageBusManager;
 @interface DBModuleManager : NSObject
 @property (nonatomic, weak) MessageBusManager *messageBusManager;
 

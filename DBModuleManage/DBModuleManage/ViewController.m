@@ -7,12 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "DBModuleManager.h"
-#import "DBUIModule.h"
-#import "MessageBusManager.h"
+
+#import "TestVC.h"
 @interface ViewController ()
-@property (nonatomic, strong) DBModuleManager *moduleManage;
-@property (nonatomic, strong) MessageBusManager *messageBusManager;
 
 @end
 
@@ -21,44 +18,33 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-         self.moduleManage = [[DBModuleManager alloc] init];
-           self.moduleManage.viewController = self;
-        
-        self.messageBusManager = [[MessageBusManager alloc] init];
-        
-        DBModuleConfig *config = [[DBModuleConfig alloc] init];
-        config.className =@"DBUIModule";
-        config.idenfiter = @"DBModuleUI";
-        config.priority = DBModulePriorityWhenUse;
-        config.messages = @[@"hhh"];
-        [self.moduleManage registerModule:config];
+
  
 
         
     }
     return self;
 }
-
+- (IBAction)btnClick:(id)sender{
+    TestVC *vc = [[TestVC alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self.messageBusManager postMessageWithMessageName:@"hhh"];
-    [self.messageBusManager postMessageWithMessageName:@"hhh1"];
-    [self.messageBusManager postMessageWithMessageName:@"hhh"];
 
     
 }
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.moduleManage.messageBusManager = self.messageBusManager;
-    self.messageBusManager.moduleManager = self.moduleManage;
-    [self.moduleManage installModule];
+
 
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.moduleManage uninstallModule];
-}
+
 
 @end
