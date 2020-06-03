@@ -58,7 +58,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.moduleManage unin];
+    [self.moduleManage uninstallModule];
 }
 
 @end
